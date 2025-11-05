@@ -852,6 +852,12 @@ MonoBehaviour:
   fromLeft: 1
   fromRight: 0
   gameOverManager: {fileID: 0}
+  squeezeDistance: 0.5
+  blockerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  originOffset: 0.02
+  debugLogs: 0
 --- !u!1 &724538910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,7 +1094,7 @@ Transform:
   m_GameObject: {fileID: 914382281}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.4, y: 10.7, z: 0}
+  m_LocalPosition: {x: 15.4, y: 28.43, z: 0}
   m_LocalScale: {x: 0.27059492, y: 0.18621792, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1449,7 +1455,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1471,7 +1477,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 870029b5c9b334bd7b983aab70ebb5e0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

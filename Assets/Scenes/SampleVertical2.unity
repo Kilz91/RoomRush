@@ -820,6 +820,12 @@ MonoBehaviour:
   fromLeft: 1
   fromRight: 0
   gameOverManager: {fileID: 0}
+  squeezeDistance: 0.5
+  blockerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  originOffset: 0.02
+  debugLogs: 0
 --- !u!1 &724538910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1477,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 870029b5c9b334bd7b983aab70ebb5e0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
