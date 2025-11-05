@@ -42,6 +42,22 @@ public class TeleporteController : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
+        StartCoroutine(DelayedTeleportCheck(other.gameObject));
+    }
+
+    private System.Collections.IEnumerator DelayedTeleportCheck(GameObject player)
+    {
+        // wait one frame so other trigger handlers can run
+        yield return null;
+
+        // if WinManager exists and a win is active (or already reached), skip teleport
+        if (WinManager.Instance != null && WinManager.Instance.HasWon())
+        {
+            Debug.Log($"{nameof(TeleporteController)}: teleport skipped because Win active", this);
+            yield break;
+        }
+
+        // otherwise proceed to choose and load a scene
         ChargerSceneAleatoire();
     }
 
