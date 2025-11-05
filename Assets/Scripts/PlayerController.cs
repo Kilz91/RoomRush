@@ -5,53 +5,44 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D _rigidBody;
+    public Rigidbody2D rb;
+    public float speed;
+    public float jumpForce;
+    public LayerMask groundLayer;
+    public Transform groundCheck;
+    float horizontal;
+    SpriteRenderer sr;
+    Animator animator;
 
-    [SerializeField]
-    private float _jumpForce;
-
-    [SerializeField]
-    private LayerMask _groundMask;
-
-    [SerializeField]
-    private float _speed;
-
-    [SerializeField]
-    private float _deceleration;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _rigidBody = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if(Physics2D.Raycast(transform.position, Vector2.down, 1.1f, _groundMask))
-        {
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                _rigidBody.AddForce(new Vector2(0, 1) * _jumpForce, ForceMode2D.Impulse);
-            }
-        }
+        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        animator.SetFloat("speed", Mathf.Abs(horizontal));
+        animator.SetBool("IsGrounded", IsGrounded());
+    }
+    public void Move(InputAction.CallbackContext context)
+    {
+        horizontal = context.ReadValue<Vector2>().x;
+        sr.flipX = horizontal < 0 ? true : false;
+    }
 
-        float direction = 0;
-
-        if (Keyboard.current.aKey.isPressed)
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && IsGrounded())
         {
-            direction = -1;
-        } else if (Keyboard.current.dKey.isPressed)
-        {
-            direction = 1;
-        }
-
-        if(direction != 0)
-        {
-            _rigidBody.linearVelocity = new Vector2(direction * _speed, _rigidBody.linearVelocity.y);
-        }else
-        {
-            _rigidBody.linearVelocity = new Vector2(_rigidBody.linearVelocity.x * _deceleration, _rigidBody.linearVelocity.y);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
+
+    bool IsGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(.25f, .1f), CapsuleDirection2D.Horizontal, 0f, groundLayer);
+    }
+
 }
