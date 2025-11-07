@@ -2960,7 +2960,7 @@ MonoBehaviour:
   expandSpeed: 0.1
   fromTop: 0
   fromBottom: 0
-  fromLeft: 1
+  fromLeft: 0
   fromRight: 0
   gameOverManager: {fileID: 0}
   squeezeDistance: 0.5
@@ -3578,7 +3578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WinManager
   winSprite: {fileID: 1599340770}
   winCameraPosition: {x: 0, y: 0, z: -10}
-  doorsToWin: 6
+  doorsToWin: 5
 --- !u!212 &1599340772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3626,7 +3626,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4846896553144377880, guid: 16659ddeea8b62c4c8492e1b0675609f, type: 3}
+  m_Sprite: {fileID: -804355145038162961, guid: d9c0b4fd15f99f94cbd76e38f9eae30d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3646,8 +3646,8 @@ Transform:
   m_GameObject: {fileID: 1599340770}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.35, y: 40.94, z: 0}
-  m_LocalScale: {x: 1.5855294, y: 1.5840642, z: 1}
+  m_LocalPosition: {x: 7.222, y: 39.8109, z: 0}
+  m_LocalScale: {x: 2.7554917, y: 2.8386433, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4130,13 +4130,13 @@ MonoBehaviour:
   - nomScene: SceneIce
     spawnId: NextStage
     poids: 1
-  - nomScene: SceneHorizontal
+  - nomScene: SceneMine
     spawnId: NextStage
     poids: 1
-  - nomScene: SceneHorizontal2
+  - nomScene: SceneChateau
     spawnId: NextStage
     poids: 1
-  - nomScene: SampleVertical2
+  - nomScene: SceneJungle
     spawnId: NextStage
     poids: 1
   exclureSceneCourante: 1

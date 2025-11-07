@@ -5,18 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/SceneHorizontal.unity
-    guid: 64157c12c923140baa39c72e69851374
   - enabled: 1
     path: Assets/Scenes/SceneIce.unity
     guid: a094895232d724aff9440c6944d34332
   - enabled: 1
-    path: Assets/Scenes/SceneHorizontal2.unity
+    path: Assets/Scenes/SceneMine.unity
     guid: f15c9aaded75345b6977019bbb188c2b
+  - enabled: 1
+    path: Assets/Scenes/SceneChateau.unity
+    guid: d61dbe08b9405324191f38f50ca1f097
+  - enabled: 1
+    path: Assets/Scenes/SceneJungle.unity
+    guid: 31ede7d9176e3407d957239e8d304425
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
