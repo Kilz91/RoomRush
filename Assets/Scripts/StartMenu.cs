@@ -20,6 +20,7 @@ public class StartMenu : MonoBehaviour
     // Appelé par le bouton UI (OnClick)
     public void OnPlayClicked()
     {
+        // Appelé par le bouton Play (UI) pour démarrer la partie
         StartGame();
     }
 
@@ -27,7 +28,7 @@ public class StartMenu : MonoBehaviour
     public void OnQuitClicked()
     {
 #if UNITY_EDITOR
-        // En éditeur, stoppe le Play Mode
+    // En éditeur, stoppe le Play Mode (Application.Quit ne fonctionne pas ici)
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
@@ -44,6 +45,7 @@ public class StartMenu : MonoBehaviour
                 // Entrée (Enter ou Numpad Enter) ou Espace
                 if (kb.enterKey.wasPressedThisFrame || kb.numpadEnterKey.wasPressedThisFrame || kb.spaceKey.wasPressedThisFrame)
                 {
+                    // Démarrage via raccourci clavier
                     StartGame();
                 }
                 // Échap pour quitter (optionnel)
@@ -71,6 +73,7 @@ public class StartMenu : MonoBehaviour
         // Réinitialiser l'état de victoire éventuel
         if (WinManager.Instance != null)
         {
+            // Remise à zéro du compteur de portes pour une nouvelle session
             WinManager.Instance.ResetDoors();
         }
 
@@ -82,6 +85,7 @@ public class StartMenu : MonoBehaviour
             return;
         }
 
+        // Chargement effectif de la première scène de jeu
         SceneManager.LoadScene(firstGameSceneIndex);
     }
 }

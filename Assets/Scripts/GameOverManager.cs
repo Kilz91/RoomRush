@@ -12,14 +12,16 @@ public class GameOverManager : MonoBehaviour
 
     void Awake()
     {
+        // Mise en place du singleton GameOverManager (un seul actif)
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-        if (gameOverSprite != null) gameOverSprite.SetActive(false);
+        if (gameOverSprite != null) gameOverSprite.SetActive(false); // cacher l'overlay de Game Over au démarrage
     }
 
     // Called when the player dies (touch the moving wall)
     public void TriggerGameOver(GameObject player)
     {
+        // Fonction centrale appelée quand le joueur perd (mur, piège, etc.)
         // Stop player and hide its visuals
         if (player != null)
         {
@@ -31,9 +33,11 @@ public class GameOverManager : MonoBehaviour
                 rb.isKinematic = true;
             }
 
+            // On masque le rendu et on désactive l'animator pour figer visuellement le joueur
             foreach (var r in player.GetComponentsInChildren<SpriteRenderer>(true)) r.enabled = false;
             foreach (var a in player.GetComponentsInChildren<Animator>(true)) a.enabled = false;
 
+            // On désactive le contrôle joueur et sa collision
             var pc = player.GetComponent<PlayerController>();
             if (pc != null) pc.enabled = false;
 
@@ -44,6 +48,7 @@ public class GameOverManager : MonoBehaviour
         // Activate sprite (if assigned) and bring camera to the desired position
         if (gameOverSprite != null)
         {
+            // Si un sprite d'overlay est assigné, on l'affiche au centre de la caméra
             var cam = Camera.main;
             if (cam != null)
             {
@@ -58,6 +63,7 @@ public class GameOverManager : MonoBehaviour
 
         if (Camera.main != null)
         {
+            // Repositionne la caméra (optionnel) pour mettre en avant l'écran de défaite
             Camera.main.transform.position = gameOverCameraPosition;
         }
     }

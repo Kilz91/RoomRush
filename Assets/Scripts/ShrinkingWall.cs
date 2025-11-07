@@ -26,6 +26,7 @@ public class ShrinkingWall : MonoBehaviour
 
     void Start()
     {
+        // Détermination de la direction initiale du mur selon le flag activé
         if (fromTop) moveDirection = Vector3.down;
         else if (fromBottom) moveDirection = Vector3.up;
         else if (fromLeft) moveDirection = Vector3.right;
@@ -35,8 +36,10 @@ public class ShrinkingWall : MonoBehaviour
 
     void Update()
     {
+        // Avance du mur dans sa direction (mouvement linéaire simple)
         transform.position += moveDirection * speed * Time.deltaTime;
 
+        // Agrandissement progressif pour donner une impression de pression
         Vector3 s = transform.localScale;
         if (fromTop || fromBottom) s.y += expandSpeed * Time.deltaTime;
         else if (fromLeft || fromRight) s.x += expandSpeed * Time.deltaTime;
@@ -49,7 +52,7 @@ public class ShrinkingWall : MonoBehaviour
     void HandlePlayerHit(GameObject obj)
     {
         if (!obj || !obj.CompareTag("Player")) return;
-        // defer check to next physics step for reliable overlap
+        // On décale à la prochaine frame physique pour des bounds stables (écrasement)
         StartCoroutine(CheckCrush(obj));
     }
 
@@ -58,6 +61,7 @@ public class ShrinkingWall : MonoBehaviour
         yield return new WaitForFixedUpdate();
         if (!player) yield break;
 
+        // Direction utilisée pour pousser / détecter l'écrasement
         Vector3 pd3 = moveDirection;
         if (pd3 == Vector3.zero)
         {
@@ -93,6 +97,7 @@ public class ShrinkingWall : MonoBehaviour
             if (col.gameObject == player) continue;
             if (col.gameObject == gameObject) continue;
 
+            // Si un autre collider "solide" se trouve exactement dans la zone d'écrasement => Game Over
             if (debugLogs) Debug.Log($"ShrinkingWall: blocker {col.gameObject.name}");
             if (gameOverManager != null) gameOverManager.TriggerGameOver(player);
             else if (GameOverManager.Instance != null) GameOverManager.Instance.TriggerGameOver(player);
@@ -100,6 +105,7 @@ public class ShrinkingWall : MonoBehaviour
             yield break;
         }
 
+        // Sinon: pas encore écrasé (le joueur peut encore reculer)
         if (debugLogs) Debug.Log("ShrinkingWall: no blocker detected");
     }
 }
