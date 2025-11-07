@@ -66,6 +66,7 @@ public class WinManager : MonoBehaviour
             var rb = player.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
+                // Remplacer linearVelocity par velocity (API publique Unity)
                 rb.linearVelocity = Vector2.zero;
                 rb.isKinematic = true;
             }

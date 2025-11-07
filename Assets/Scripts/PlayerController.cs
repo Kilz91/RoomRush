@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Utiliser la propriété officielle 'velocity' (linearVelocity est obsolète / interne)
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         animator.SetFloat("speed", Mathf.Abs(horizontal));
         animator.SetBool("IsGrounded", IsGrounded());
