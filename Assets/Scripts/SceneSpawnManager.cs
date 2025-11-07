@@ -8,11 +8,13 @@ public static class SceneSpawnManager
 
     public static void SetNext(string spawnId)
     {
+        // Stocke l'ID que la scène suivante utilisera pour positionner le joueur
         NextSpawnId = spawnId;
     }
 
     public static void Clear()
     {
+        // Réinitialise après utilisation pour éviter un respawn involontaire
         NextSpawnId = null;
     }
 }

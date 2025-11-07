@@ -13,6 +13,7 @@ public class TeleporteController : MonoBehaviour
     private void Reset()
     {
         // S'assurer que le collider est configuré en "Is Trigger" pour une zone de téléportation 2D
+        // (ainsi, le joueur peut traverser la zone et déclencher l'événement sans collision physique)
         var col = GetComponent<Collider2D>();
         if (col != null)
         {
@@ -30,7 +31,7 @@ public class TeleporteController : MonoBehaviour
 
     private System.Collections.IEnumerator DelayedTeleportCheck(GameObject player)
     {
-        // wait one frame so other trigger handlers can run
+        // Attendre une frame pour laisser d'autres triggers/handlers s'exécuter
         yield return null;
 
         // if WinManager exists and a win is active (or already reached), skip teleport
@@ -40,7 +41,7 @@ public class TeleporteController : MonoBehaviour
             yield break;
         }
 
-        // progression séquentielle uniquement
+        // Progression séquentielle uniquement: on passe à la scène suivante dans les Build Settings
         ChargerSceneSuivante(player);
     }
 
@@ -55,7 +56,7 @@ public class TeleporteController : MonoBehaviour
             return;
         }
 
-        int nextIndex = idx + 1;
+    int nextIndex = idx + 1; // scène suivante
         int total = SceneManager.sceneCountInBuildSettings;
 
         if (nextIndex >= total)
@@ -72,7 +73,7 @@ public class TeleporteController : MonoBehaviour
             return;
         }
 
-        // Charger la scène suivante par index
+        // Charger la scène suivante par index (et mémoriser un SpawnPoint si fourni)
         if (!string.IsNullOrEmpty(sequenceSpawnId))
             SceneSpawnManager.SetNext(sequenceSpawnId);
 

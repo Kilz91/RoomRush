@@ -28,10 +28,12 @@ public class SpawnPoint : MonoBehaviour
 
                 if (rb != null)
                 {
+                    // Déplacement physique du joueur directement à la position du spawn (2D)
                     rb.position = new Vector2(target.x, target.y);
                 }
                 else
                 {
+                    // Fallback si pas de Rigidbody2D
                     player.transform.position = target;
                 }
             }

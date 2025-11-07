@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Caméra simple qui suit la cible avec un décalage fixe
         transform.position = _target.position + _offset;   
     }
 }
