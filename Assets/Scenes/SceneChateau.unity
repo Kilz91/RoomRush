@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd2472625c30c74d9a44800bf1d1b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShrinkingWall
-  speed: 1
+  speed: 4
   expandSpeed: 0
   fromTop: 0
   fromBottom: 0
@@ -32630,6 +32630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: bacc40e41d82b4a9b90900552a19fc3d, type: 3}
   m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
